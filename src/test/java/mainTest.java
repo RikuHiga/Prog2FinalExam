@@ -1,4 +1,4 @@
-import jp.ac.uryukyu.ie.e195760.main;
+import jp.ac.uryukyu.ie.e195760.Main;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
