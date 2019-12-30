@@ -1,8 +1,9 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.Scanner;
-//コマンドに空白を入力するとバグる
+//タイトルしか入力しないTodoだとエラー
 public class Main {
+    static String FILENAME="TodoListSave.csv";
     String DESCRIPTION="description=";//コマンドの定形文定義
     String DEADLINE="deadline=";
     String TAG="tag=";
@@ -11,15 +12,19 @@ public class Main {
     public static void main(String[] args){
         TodoManager todo=new TodoManager();//ViewAllのために実験的に追加
         Analysis analysis=new Analysis();
+        SaveandLoad savefile=new SaveandLoad();
         Scanner scan=new Scanner(System.in);
+        savefile.load();
+
         while(true){
+            todo.ViewAll();//TodoListが格納できているか確認のために実験的に追加
             System.out.println("コマンドを入力してください。");
             String cmd=scan.nextLine();
             if(cmd.equals("exit")){
                 break;
             }
             analysis.classify(cmd);
-            todo.ViewAll();//TodoListが格納できているか確認のために実験的に追加
+            savefile.save();
         }
 
 //        System.out.println("Hello World");
