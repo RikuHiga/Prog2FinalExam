@@ -1,20 +1,14 @@
 package jp.ac.uryukyu.ie.e195760;
-//continue文をうまく使って処理を飛ばせるかも
 
 import java.util.Arrays;
 
 public class AddCommand {
-    String[] todoData={"","","","","false","false","false"};//タイトル,説明,日付,タグ,優先タグ,完了した,捨てた
     String[] additionalConfig=new String[7];
     Main main=new Main();
     TodoManager todo=new TodoManager();
-    public AddCommand(){
-        todoData[5]="false";
-        todoData[6]="false";
-    }
     void add(String[] cmd){
-        //boolean checkDescription=false,checkDeadline=false,checkTag=false,checkPriority=false;
         System.out.println("add起動");
+        String[] todoData={"","","","","false","false","false"};//タイトル,説明,日付,タグ,優先タグ,完了した,捨てた
         todoData[0]=cmd[1];
         additionalConfig=cmd[2].split(",");
         for(String splitCmd:additionalConfig){

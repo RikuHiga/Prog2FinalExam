@@ -12,10 +12,11 @@ public class TodoManager {
         //todoList=new ArrayList<String[]>();
     }
     void ViewAll(){
-        System.out.println("ViewAll起動");
+        System.out.println("==========================================");
         for(String[] n:this.todoList){
             System.out.println(Arrays.toString(n));
         }
+        System.out.println("==========================================");
     }
     void TodoAdd(String[] TodoData){
 //        System.out.println("TodoAdd起動");

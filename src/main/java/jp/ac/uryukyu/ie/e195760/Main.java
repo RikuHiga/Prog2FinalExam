@@ -1,7 +1,7 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.Scanner;
-//無限ループさせる。コマンドで処理を止める
+//コマンドに空白を入力するとバグる
 public class Main {
     String DESCRIPTION="description=";//コマンドの定形文定義
     String DEADLINE="deadline=";
@@ -12,10 +12,15 @@ public class Main {
         TodoManager todo=new TodoManager();//ViewAllのために実験的に追加
         Analysis analysis=new Analysis();
         Scanner scan=new Scanner(System.in);
-        System.out.println("コマンドを入力してください。");
-        String cmd=scan.nextLine();
-        analysis.classify(cmd);
-        todo.ViewAll();//TodoListが格納できているか確認のために実験的に追加
+        while(true){
+            System.out.println("コマンドを入力してください。");
+            String cmd=scan.nextLine();
+            if(cmd.equals("exit")){
+                break;
+            }
+            analysis.classify(cmd);
+            todo.ViewAll();//TodoListが格納できているか確認のために実験的に追加
+        }
 
 //        System.out.println("Hello World");
 //        System.out.println(add(64,128));
