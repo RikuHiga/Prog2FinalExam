@@ -1,13 +1,14 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * TODOリストを管理し、ViewAll機能を制御するクラス。
  */
 public class TodoManager {
     public static ArrayList<String[]> todoList=new ArrayList<String[]>();
+    public static ArrayList<String[]> visibleList;
+    int count;
     public TodoManager(){
         //todoList=new ArrayList<String[]>();
     }
@@ -16,7 +17,8 @@ public class TodoManager {
      * タスク一覧を表示する。フィルター機能あり
      */
     void ViewAll(){
-        ArrayList<String[]> visibleList=new ArrayList<String[]>();
+        visibleList=new ArrayList<String[]>();
+        count=1;
         System.out.println("==========================================");
         for(String[] todoList:this.todoList){
             if(!todoList[7].equals("true")){
@@ -24,7 +26,6 @@ public class TodoManager {
             }
         }
         for(String[] visible:visibleList){
-            //System.out.println(Arrays.toString(visible));
             ViewTodo(visible);
         }
         System.out.println("==========================================");
@@ -36,10 +37,11 @@ public class TodoManager {
      */
     void ViewTodo(String[] visibleList){
         String priority="　";
+        count++;
         if(visibleList[5].equals("true")){
-            priority="＊";
+            priority=Main.PRIORITY[1];
         }
-        System.out.println("\n"+priority+visibleList[0]);
+        System.out.println("\n"+count+"."+priority+visibleList[0]);
         if(visibleList[1].length()!=0){
             System.out.println("　"+visibleList[1]);
         }
@@ -52,6 +54,8 @@ public class TodoManager {
         if(visibleList[4].length()!=0){
             System.out.print("　"+Main.DURATION[1]+":"+visibleList[4]);
         }
-        System.out.println();
+        if(visibleList[1].length()!=0||visibleList[2].length()!=0||visibleList[3].length()!=0||visibleList[4].length()!=0){
+            System.out.println();
+        }
     }
 }

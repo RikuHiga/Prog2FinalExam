@@ -1,11 +1,15 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.Scanner;
-//viewAll機能を整える
 //removeコマンドを追加
+//returnコマンド追加
+//completeコマンド追加
+//remove、completeされた時のtimestampを記録
 //viewAllの未完了タスクのみ
 //viewAllの完了タグのみ
 //viewAllのゴミ箱のみ
+//editコマンド追加
+
 public class Main {
     static String FILENAME="TodoListSave.csv";
     static String ADD="add";
