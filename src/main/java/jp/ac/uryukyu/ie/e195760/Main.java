@@ -1,13 +1,20 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.Scanner;
-//タイトルしか入力しないTodoだとエラー
+//viewAll機能を整える
+//removeコマンドを追加
+//viewAllの未完了タスクのみ
+//viewAllの完了タグのみ
+//viewAllのゴミ箱のみ
 public class Main {
     static String FILENAME="TodoListSave.csv";
-    String DESCRIPTION="description=";//コマンドの定形文定義
-    String DEADLINE="deadline=";
-    String TAG="tag=";
-    String PRIORITY="priority";
+    static String ADD="add";
+    static String REMOVE="remove";
+    static String[] DESCRIPTION={"description=","説明"};//コマンドの定形文定義
+    static String[] DEADLINE={"deadline=","期日"};
+    static String[] TAG={"tag=","タグ"};
+    static String[] DURATION={"duration=","所要時間"};
+    static String[] PRIORITY={"priority","＊"};
 
     public static void main(String[] args){
         TodoManager todo=new TodoManager();//ViewAllのために実験的に追加

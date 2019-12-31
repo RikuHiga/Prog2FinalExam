@@ -4,32 +4,54 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * TODOリストを管理するクラス
+ * TODOリストを管理し、ViewAll機能を制御するクラス。
  */
 public class TodoManager {
     public static ArrayList<String[]> todoList=new ArrayList<String[]>();
     public TodoManager(){
         //todoList=new ArrayList<String[]>();
     }
+
+    /**
+     * タスク一覧を表示する。フィルター機能あり
+     */
     void ViewAll(){
+        ArrayList<String[]> visibleList=new ArrayList<String[]>();
         System.out.println("==========================================");
-        for(String[] n:this.todoList){
-            System.out.println(Arrays.toString(n));
+        for(String[] todoList:this.todoList){
+            if(!todoList[7].equals("true")){
+                visibleList.add(todoList);
+            }
+        }
+        for(String[] visible:visibleList){
+            //System.out.println(Arrays.toString(visible));
+            ViewTodo(visible);
         }
         System.out.println("==========================================");
     }
-    void TodoAdd(String[] TodoData){
-//        System.out.println("TodoAdd起動");
-//        String[] todoData=new String[7];//タイトル,説明,日付,タグ,優先タグ,完了か否か,ゴミ箱
-//        todoData="TodoListを作る,JavaでTodoListを作る,201912261754,java,true,false,false".split(",");
-//        todoData[4]="false";
-//        todoList.add(todoData);
-//        todoData="Pomodoroを作る,UnityでPomodoroを作る,201912261817,Unity,true,false,false".split(",");
-//        todoList.add(todoData);
-//        todoData="どう森のBGMを編集する,音源編集ソフトでintroとmainに分ける,201912261818,Unity,true,false,false".split(",");
-//        todoList.add(todoData);
-//        todoData=todoList.get(1);
-//        todoData[4]="false";
-        todoList.add(TodoData);
+
+    /**
+     * Todoリストの見え方を整える。
+     * @param visibleList フィルターにかけたTodoList
+     */
+    void ViewTodo(String[] visibleList){
+        String priority="　";
+        if(visibleList[5].equals("true")){
+            priority="＊";
+        }
+        System.out.println("\n"+priority+visibleList[0]);
+        if(visibleList[1].length()!=0){
+            System.out.println("　"+visibleList[1]);
+        }
+        if(visibleList[2].length()!=0){
+            System.out.print("　"+Main.DEADLINE[1]+":"+visibleList[2]);
+        }
+        if(visibleList[3].length()!=0){
+            System.out.print("　"+Main.TAG[1]+":"+visibleList[3]);
+        }
+        if(visibleList[4].length()!=0){
+            System.out.print("　"+Main.DURATION[1]+":"+visibleList[4]);
+        }
+        System.out.println();
     }
 }
