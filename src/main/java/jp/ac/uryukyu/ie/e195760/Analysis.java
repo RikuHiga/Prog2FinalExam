@@ -6,6 +6,7 @@ package jp.ac.uryukyu.ie.e195760;
 public class Analysis {
     String[] splitCmd=new String[3];
     AddCommand addCommand=new AddCommand();
+    RemoveCommand removeCommand=new RemoveCommand();
     Main main=new Main();
     void classify(String cmd){
         if(cmd.split(" ",3).length>1){
@@ -20,6 +21,8 @@ public class Analysis {
             }
             if(splitCmd[0].equals(main.ADD)){
                 addCommand.add(splitCmd);
+            }else if(splitCmd[0].equals(main.REMOVE)){
+
             }else{
                 System.out.println("不正なコマンドです");
             }

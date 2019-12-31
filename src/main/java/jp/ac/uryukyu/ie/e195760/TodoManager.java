@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class TodoManager {
     public static ArrayList<String[]> todoList=new ArrayList<String[]>();
-    public static ArrayList<String[]> visibleList;
+    public static ArrayList<Integer> visibleList;
     int count;
     public TodoManager(){
         //todoList=new ArrayList<String[]>();
@@ -17,16 +17,17 @@ public class TodoManager {
      * タスク一覧を表示する。フィルター機能あり
      */
     void ViewAll(){
-        visibleList=new ArrayList<String[]>();
-        count=1;
+        visibleList=new ArrayList<Integer>();
+        count=0;
         System.out.println("==========================================");
         for(String[] todoList:this.todoList){
             if(!todoList[7].equals("true")){
-                visibleList.add(todoList);
+                visibleList.add(count);
             }
+            count++;
         }
-        for(String[] visible:visibleList){
-            ViewTodo(visible);
+        for(int visibleIndex:visibleList){
+            ViewTodo(todoList.get(visibleIndex));
         }
         System.out.println("==========================================");
     }

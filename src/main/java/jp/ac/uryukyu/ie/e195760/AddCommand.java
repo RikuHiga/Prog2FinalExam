@@ -1,7 +1,5 @@
 package jp.ac.uryukyu.ie.e195760;
 
-import java.util.Arrays;
-
 public class AddCommand {
     String[] additionalConfig=new String[7];
     //Main main=new Main();
