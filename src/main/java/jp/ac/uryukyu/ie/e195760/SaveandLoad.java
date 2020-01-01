@@ -11,7 +11,11 @@ public class SaveandLoad {
         try {
             FileWriter fileWriter = new FileWriter(Main.FILENAME);
             for(String[] todolist:TodoManager.todoList){
-                fileWriter.write(todolist[0]+","+todolist[1]+","+todolist[2]+","+todolist[3]+","+todolist[4]+","+todolist[5]+","+todolist[6]+","+todolist[7]+"\n");
+                fileWriter.write(
+                        todolist[0]+","+todolist[Integer.parseInt(Main.DESCRIPTION[2])]+
+                                ","+todolist[Integer.parseInt(Main.DEADLINE[2])]+","+todolist[Integer.parseInt(Main.DURATION[2])]+
+                                ","+todolist[Integer.parseInt(Main.TAG[2])]+","+todolist[Integer.parseInt(Main.PRIORITY[2])]+
+                                ","+todolist[Integer.parseInt(Main.COMPLETE[2])]+","+todolist[Integer.parseInt(Main.TRASH[2])]+"\n");
             }
             fileWriter.close();
         } catch (IOException ex) {

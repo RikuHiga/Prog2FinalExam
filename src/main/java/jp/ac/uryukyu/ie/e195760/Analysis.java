@@ -22,7 +22,7 @@ public class Analysis {
             if(splitCmd[0].equals(main.ADD)){
                 addCommand.add(splitCmd);
             }else if(splitCmd[0].equals(main.REMOVE)){
-
+                removeCommand.remove(splitCmd);
             }else{
                 System.out.println("不正なコマンドです");
             }

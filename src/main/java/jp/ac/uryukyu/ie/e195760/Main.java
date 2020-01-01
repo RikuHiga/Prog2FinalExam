@@ -14,11 +14,14 @@ public class Main {
     static String FILENAME="TodoListSave.csv";
     static String ADD="add";
     static String REMOVE="remove";
-    static String[] DESCRIPTION={"description=","説明"};//コマンドの定形文定義
-    static String[] DEADLINE={"deadline=","期日"};
-    static String[] TAG={"tag=","タグ"};
-    static String[] DURATION={"duration=","所要時間"};
-    static String[] PRIORITY={"priority","＊"};
+    static String[] TITLE={"title","題名","0"};
+    static String[] DESCRIPTION={"description=","説明","1"};//コマンドの定形文定義
+    static String[] DEADLINE={"deadline=","締切","2"};
+    static String[] TAG={"tag=","タグ","4"};
+    static String[] DURATION={"duration=","所要時間","3"};
+    static String[] PRIORITY={"priority","＊","5"};
+    static String[] COMPLETE={"complete","完了済","6"};
+    static String[] TRASH={"trash","ゴミ箱","7"};
 
     public static void main(String[] args){
         TodoManager todo=new TodoManager();//ViewAllのために実験的に追加
