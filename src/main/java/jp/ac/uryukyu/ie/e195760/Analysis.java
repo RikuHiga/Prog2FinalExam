@@ -22,9 +22,13 @@ public class Analysis {
             if(splitCmd[0].equals(main.ADD)){
                 addCommand.add(splitCmd);
             }else if(splitCmd[0].equals(main.REMOVE)){
-                removeCommand.remove(splitCmd);
+                if(TodoManager.visibleList.size()>=Integer.parseInt(splitCmd[1])&&Integer.parseInt(splitCmd[1])>0){
+                    removeCommand.remove(splitCmd);
+                }else{
+                    System.out.println("removeの後の数が不正です。");
+                }
             }else{
-                System.out.println("不正なコマンドです");
+                System.out.println("不明なコマンドです");
             }
         }else{
             System.out.println("不正なコマンドです。");

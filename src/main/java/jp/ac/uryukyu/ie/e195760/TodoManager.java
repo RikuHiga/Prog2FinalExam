@@ -55,7 +55,7 @@ public class TodoManager {
         if(visibleList[Integer.parseInt(Main.DURATION[2])].length()!=0){
             System.out.print("　"+Main.DURATION[1]+":"+visibleList[Integer.parseInt(Main.DURATION[2])]);
         }
-        if(visibleList[1].length()+visibleList[2].length()+visibleList[3].length()+visibleList[4].length()!=0){//改行はタスクの追加データがある時のみでいいため
+        if(visibleList[Integer.parseInt(Main.DEADLINE[2])].length()+visibleList[Integer.parseInt(Main.TAG[2])].length()+visibleList[Integer.parseInt(Main.DURATION[2])].length()!=0){//改行はタスクの追加データがある時のみでいいため
             System.out.println();
         }
     }

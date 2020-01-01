@@ -2,11 +2,9 @@ package jp.ac.uryukyu.ie.e195760;
 
 import java.util.Arrays;
 
-//remove 5
-//remove index の後のvisibleList[index-1]を持ってくる
-//持ってきた数番目のtodoListを持ってくる
-//trashをtrueに変更する
-//同じ場所に戻す
+/**
+ * removeコマンドの処理。数字で指定されたタスクをゴミ箱に入れる。
+ */
 public class RemoveCommand {
     int index;
     String[] todo;
@@ -18,6 +16,7 @@ public class RemoveCommand {
             //文字列で検索してもいい
         }
         todo=TodoManager.todoList.get(TodoManager.visibleList.get(index-1));
-        System.out.println(Arrays.toString(todo));
+        todo[Integer.parseInt(Main.TRASH[2])]="true";
+        TodoManager.todoList.set(index-1,todo);
     }
 }
