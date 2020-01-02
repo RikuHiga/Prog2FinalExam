@@ -1,7 +1,6 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.Scanner;
-//removeコマンドを追加
 //returnコマンド追加
 //completeコマンド追加
 //remove、completeされた時のtimestampを記録
@@ -10,6 +9,9 @@ import java.util.Scanner;
 //viewAllのゴミ箱のみ
 //editコマンド追加
 
+/**
+ * プログラム全体の司令塔で、不変のデータを置く場所。
+ */
 public class Main {
     static String FILENAME="TodoListSave.csv";
     static String ADD="add";
@@ -20,18 +22,20 @@ public class Main {
     static String[] TAG={"tag=","タグ","4"};
     static String[] DURATION={"duration=","所要時間","3"};
     static String[] PRIORITY={"priority","＊","5"};
-    static String[] COMPLETE={"complete","完了済","6"};
+    static String[] COMPLETE={"comp","完了済","6"};
     static String[] TRASH={"trash","ゴミ箱","7"};
+    static String[] ascendingOrder={"ascend","昇順"};
+    static String[] descendingOrder={"descend","降順"};
 
     public static void main(String[] args){
-        TodoManager todo=new TodoManager();//ViewAllのために実験的に追加
+        ViewManager view=new ViewManager();//ViewAllのために実験的に追加
         Analysis analysis=new Analysis();
         SaveandLoad savefile=new SaveandLoad();
         Scanner scan=new Scanner(System.in);
         savefile.load();
 
         while(true){
-            todo.ViewAll();//TodoListが格納できているか確認のために実験的に追加
+            view.ViewAll();//毎回TodoListを出力する
             System.out.println("コマンドを入力してください。");
             String cmd=scan.nextLine();
             if(cmd.equals("exit")){
