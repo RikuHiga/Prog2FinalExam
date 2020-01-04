@@ -1,9 +1,6 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.Scanner;
-//completeコマンド追加
-//viewAllの完了タグのみ
-//returnコマンド追加
 //remove、completeされた時のtimestampを記録
 //editコマンド追加
 
@@ -15,6 +12,7 @@ public class Main {
     static String ADD="add";
     static String REMOVE="remove";
     static String VIEW="view";
+    static String SALVAGE="salvage";
     static String[] TITLE={"title","題名","0"};
     static String[] DESCRIPTION={"description=","説明","1"};//コマンドの定形文定義
     static String[] DEADLINE={"deadline=","締切","2"};
