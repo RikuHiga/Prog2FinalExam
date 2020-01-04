@@ -8,7 +8,8 @@ import java.util.Arrays;
 public class Analysis {
     String[] splitCmd=new String[3];
     AddCommand addCommand=new AddCommand();
-    RemoveCommand removeCommand=new RemoveCommand();
+    //RemoveCommand removeCommand=new RemoveCommand();
+    RemoveAndComplete removeAndComplete=new RemoveAndComplete();
     ViewManager viewcommand=new ViewManager();
     //String[] viewCmd={"","",""};//visibleList更新用
     //Main main=new Main();
@@ -31,12 +32,19 @@ public class Analysis {
             }else if(splitCmd[0].equals(Main.REMOVE)&&!splitCmd[1].equals("")){
                 if(TodoManager.visibleList.size()>=Integer.parseInt(splitCmd[1])&&Integer.parseInt(splitCmd[1])>0){
                     //removeの後に指定した数がvisibleListの範囲内に収まっていたら
-                    removeCommand.remove(splitCmd);
+                    removeAndComplete.remove(splitCmd);
                 }else{
                     System.out.println("removeの後の数が不正です。");
                 }
             }else if(splitCmd[0].equals(Main.VIEW)){
                 TodoManager.updateVisibleList(splitCmd);//指定された場所のvisibleListを作る
+            }else if(splitCmd[0].equals(Main.COMPLETE[0])&&!splitCmd[1].equals("")){
+                if(TodoManager.visibleList.size()>=Integer.parseInt(splitCmd[1])&&Integer.parseInt(splitCmd[1])>0){
+                    //removeの後に指定した数がvisibleListの範囲内に収まっていたら
+                    removeAndComplete.complete(splitCmd);
+                }else{
+                    System.out.println("completeの後の数が不正です。");
+                }
             }else{
                 System.out.println("不明なコマンドです");
             }

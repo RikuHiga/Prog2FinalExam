@@ -1,11 +1,9 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.Scanner;
-//viewAllの未完了タスクのみ
-//viewAllの完了タグのみ
-//viewAllのゴミ箱のみ
-//returnコマンド追加
 //completeコマンド追加
+//viewAllの完了タグのみ
+//returnコマンド追加
 //remove、completeされた時のtimestampを記録
 //editコマンド追加
 
