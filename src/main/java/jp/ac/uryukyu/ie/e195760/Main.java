@@ -16,6 +16,7 @@ public class Main {
     static String FILENAME="TodoListSave.csv";
     static String ADD="add";
     static String REMOVE="remove";
+    static String VIEW="view";
     static String[] TITLE={"title","題名","0"};
     static String[] DESCRIPTION={"description=","説明","1"};//コマンドの定形文定義
     static String[] DEADLINE={"deadline=","締切","2"};
@@ -26,19 +27,23 @@ public class Main {
     static String[] TRASH={"trash","ゴミ箱","7"};
     static String[] ascendingOrder={"ascend","昇順"};
     static String[] descendingOrder={"descend","降順"};
+    static String[] DEFAULTVIEW={"","",""};//デフォルトのviewListを作るためのコマンド
 
     public static void main(String[] args){
         ViewManager view=new ViewManager();//ViewAllのために実験的に追加
         Analysis analysis=new Analysis();
         SaveandLoad savefile=new SaveandLoad();
         Scanner scan=new Scanner(System.in);
-        savefile.load();
+        savefile.load();//ファイルロード
+        //view.View(DEFAULTVIEW);
+        //analysis.classify(VIEW);
+        TodoManager.updateVisibleList(DEFAULTVIEW);//デフォルトのvisibleListに更新する
 
         while(true){
-            view.ViewAll();//毎回TodoListを出力する
+            view.PrintTodo();//毎回visibleListに記されたTodoList// を出力する
             System.out.println("コマンドを入力してください。");
-            String cmd=scan.nextLine();
-            if(cmd.equals("exit")){
+            String cmd=scan.nextLine();//コマンド入力
+            if(cmd.equals("exit")){//exitコマンドが入力されたらプログラム終了
                 break;
             }
             analysis.classify(cmd);

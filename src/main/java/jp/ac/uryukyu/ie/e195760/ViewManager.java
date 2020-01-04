@@ -1,53 +1,44 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ViewManager {
-    int count;
     /**
-     * タスク一覧を表示する。フィルター機能あり
+     * visibleListで指定されたtodoListの見え方を整えて出力する。
      */
-    void ViewAll(){
-        TodoManager.visibleList=new ArrayList<Integer>();
-        count=0;//todoListの何番目にあるかを示すために使う
+    void PrintTodo(){
+        int count=0;//visibleListの何番目にあるかを示すために使う
+        boolean optionCheck;//追加設定があるかの確認
         System.out.println("==========================================");
-        for(String[] todoList:TodoManager.todoList){//ゴミ箱にあるタスクを弾くため
-            if(!todoList[Integer.parseInt(Main.TRASH[2])].equals("true")){
-                TodoManager.visibleList.add(count);
-            }
-            count++;//todoListの何番目にあるかを数える用
-        }
-        count=0;//visibleListの何番目にあるかを示すために使う
         for(int visibleIndex:TodoManager.visibleList){
-            count++;//タスクの一番最初に表示する数字用
-            ViewTodo(TodoManager.todoList.get(visibleIndex));
+            count++;//タスクの一番最初に表示する数字に使う
+            optionCheck=false;
+            //PrintTodo(TodoManager.todoList.get(visibleIndex));
+            String priority="　";
+            if(TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.PRIORITY[2])].equals("true")){//todoListのvisibleIndex番目のMain.PRIORITY[2]番目はtrue
+                priority=Main.PRIORITY[1];
+            }
+            System.out.println("\n"+count+"."+priority+TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.TITLE[2])]);
+            if(TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.DESCRIPTION[2])].length()!=0){
+                System.out.println("　"+TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.DESCRIPTION[2])]);
+            }
+            if(TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.DEADLINE[2])].length()!=0){
+                System.out.print("　"+Main.DEADLINE[1]+":"+TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.DEADLINE[2])]);
+                optionCheck=true;
+            }
+            if(TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.TAG[2])].length()!=0){
+                System.out.print("　"+Main.TAG[1]+":"+TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.TAG[2])]);
+                optionCheck=true;
+            }
+            if(TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.DURATION[2])].length()!=0){
+                System.out.print("　"+Main.DURATION[1]+":"+TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.DURATION[2])]);
+                optionCheck=true;
+            }
+            if(optionCheck){//改行はタスクの追加データがある時のみでいいため
+                System.out.println(optionCheck);
+            }
         }
         System.out.println("==========================================");
-    }
-    /**
-     * Todoリストの見え方を整える。
-     * @param visibleList フィルターにかけたTodoList
-     */
-    void ViewTodo(String[] visibleList){
-        String priority="　";
-        if(visibleList[5].equals("true")){
-            priority=Main.PRIORITY[1];
-        }
-        System.out.println("\n"+count+"."+priority+visibleList[0]);
-        if(visibleList[Integer.parseInt(Main.DESCRIPTION[2])].length()!=0){
-            System.out.println("　"+visibleList[Integer.parseInt(Main.DESCRIPTION[2])]);
-        }
-        if(visibleList[Integer.parseInt(Main.DEADLINE[2])].length()!=0){
-            System.out.print("　"+Main.DEADLINE[1]+":"+visibleList[Integer.parseInt(Main.DEADLINE[2])]);
-        }
-        if(visibleList[Integer.parseInt(Main.TAG[2])].length()!=0){
-            System.out.print("　"+Main.TAG[1]+":"+visibleList[Integer.parseInt(Main.TAG[2])]);
-        }
-        if(visibleList[Integer.parseInt(Main.DURATION[2])].length()!=0){
-            System.out.print("　"+Main.DURATION[1]+":"+visibleList[Integer.parseInt(Main.DURATION[2])]);
-        }
-        if(visibleList[Integer.parseInt(Main.DEADLINE[2])].length()+visibleList[Integer.parseInt(Main.TAG[2])].length()+visibleList[Integer.parseInt(Main.DURATION[2])].length()!=0){//改行はタスクの追加データがある時のみでいいため
-            System.out.println();
-        }
     }
 }

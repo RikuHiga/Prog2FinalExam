@@ -9,6 +9,7 @@ public class RemoveCommand {
     int index;
     String[] todo;
     void remove(String[] cmd){
+        //System.out.println(TodoManager.visibleList);
         try{
             index=Integer.parseInt(cmd[1]);
         }catch(NumberFormatException ex){
@@ -17,6 +18,7 @@ public class RemoveCommand {
         }
         todo=TodoManager.todoList.get(TodoManager.visibleList.get(index-1));
         todo[Integer.parseInt(Main.TRASH[2])]="true";
-        TodoManager.todoList.set(index-1,todo);
+        TodoManager.todoList.set(TodoManager.visibleList.get(index-1),todo);
+        TodoManager.updateVisibleList(Main.DEFAULTVIEW);
     }
 }

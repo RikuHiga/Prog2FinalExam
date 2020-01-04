@@ -4,8 +4,9 @@ public class AddCommand {
     String[] additionalConfig=new String[7];
     //Main main=new Main();
     TodoManager todo=new TodoManager();
+
     void add(String[] cmd){
-        System.out.println("add起動");
+        //System.out.println("add起動");
         String[] todoData={"","","","","","false","false","false"};//タイトル,説明,締切,所要時間,タグ,優先タグ,完了した,捨てた
         todoData[Integer.parseInt(Main.TITLE[2])]=cmd[1];
         additionalConfig=cmd[2].split(",");
@@ -27,6 +28,6 @@ public class AddCommand {
             }
         }
         TodoManager.todoList.add(todoData);
-
+        TodoManager.updateVisibleList(Main.DEFAULTVIEW);//visibleリスト更新
     }
 }
