@@ -1,12 +1,12 @@
 package jp.ac.uryukyu.ie.e195760;
 
 import java.util.Scanner;
-//returnコマンド追加
-//completeコマンド追加
-//remove、completeされた時のtimestampを記録
 //viewAllの未完了タスクのみ
 //viewAllの完了タグのみ
 //viewAllのゴミ箱のみ
+//returnコマンド追加
+//completeコマンド追加
+//remove、completeされた時のtimestampを記録
 //editコマンド追加
 
 /**
@@ -22,8 +22,9 @@ public class Main {
     static String[] DEADLINE={"deadline=","締切","2"};
     static String[] TAG={"tag=","タグ","4"};
     static String[] DURATION={"duration=","所要時間","3"};
-    static String[] PRIORITY={"priority","＊","5"};
-    static String[] COMPLETE={"comp","完了済","6"};
+    static String[] PRIORITY={"priority","優先タスク","5"};
+    static String[] INCOMPLETE={"","未完了タスク",""};
+    static String[] COMPLETE={"complete","完了済タスク","6"};
     static String[] TRASH={"trash","ゴミ箱","7"};
     static String[] ascendingOrder={"ascend","昇順"};
     static String[] descendingOrder={"descend","降順"};

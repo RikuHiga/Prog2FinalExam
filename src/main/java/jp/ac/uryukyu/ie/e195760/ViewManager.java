@@ -1,9 +1,8 @@
 package jp.ac.uryukyu.ie.e195760;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ViewManager {
+    static String place="";
     /**
      * visibleListで指定されたtodoListの見え方を整えて出力する。
      */
@@ -11,13 +10,14 @@ public class ViewManager {
         int count=0;//visibleListの何番目にあるかを示すために使う
         boolean optionCheck;//追加設定があるかの確認
         System.out.println("==========================================");
+        System.out.println(place);
         for(int visibleIndex:TodoManager.visibleList){
             count++;//タスクの一番最初に表示する数字に使う
             optionCheck=false;
             //PrintTodo(TodoManager.todoList.get(visibleIndex));
             String priority="　";
             if(TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.PRIORITY[2])].equals("true")){//todoListのvisibleIndex番目のMain.PRIORITY[2]番目はtrue
-                priority=Main.PRIORITY[1];
+                priority="＊";
             }
             System.out.println("\n"+count+"."+priority+TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.TITLE[2])]);
             if(TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.DESCRIPTION[2])].length()!=0){
@@ -36,7 +36,7 @@ public class ViewManager {
                 optionCheck=true;
             }
             if(optionCheck){//改行はタスクの追加データがある時のみでいいため
-                System.out.println(optionCheck);
+                System.out.println();
             }
         }
         System.out.println("==========================================");
