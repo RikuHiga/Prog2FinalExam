@@ -13,7 +13,7 @@ public class AddCommand {
             additionalConfig=cmd[2].split(",");
             for(String splitCmd:additionalConfig){
                 if(splitCmd.indexOf(Main.DESCRIPTION[0])==0){//"description="が一番最初に来るとはdescriptionコマンドが入力されたということ
-                    todoData[Integer.parseInt(Main.DESCRIPTION[2])] = splitCmd.split(Main.DESCRIPTION[0])[1];
+                    todoData[Integer.parseInt(Main.DESCRIPTION[2])] = splitCmd.split(Main.DESCRIPTION[0])[1];//description=以外を抽出
                 }
                 else if(splitCmd.indexOf(Main.DEADLINE[0])==0){
                     todoData[Integer.parseInt(Main.DEADLINE[2])] = splitCmd.split(Main.DEADLINE[0])[1];

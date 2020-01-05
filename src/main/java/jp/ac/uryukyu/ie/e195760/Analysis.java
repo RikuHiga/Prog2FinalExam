@@ -8,16 +8,15 @@ import java.util.Arrays;
 public class Analysis {
     String[] splitCmd=new String[3];
     AddCommand addCommand=new AddCommand();
-    //RemoveCommand removeCommand=new RemoveCommand();
-    //RemoveAndComplete removeAndComplete=new RemoveAndComplete();
     RemoveCompleteSalvage removeCompleteSalvage=new RemoveCompleteSalvage();
     ViewManager viewcommand=new ViewManager();
+    editCommand editCommand=new editCommand();
     //String[] viewCmd={"","",""};//visibleList更新用
     //Main main=new Main();
     void classify(String cmd){
         try{
             if(cmd.split(" ",3).length>=1){//コマンドが何も入力されていなかったら弾く
-                if(cmd.split(" ",3).length==1){
+                if(cmd.split(" ",3).length==1){//splitCmdのlengthを3にする
                     splitCmd[0]=cmd.split(" ",3)[0];
                     splitCmd[1]="";
                     splitCmd[2]="";
@@ -36,23 +35,27 @@ public class Analysis {
                         //removeの後に指定した数がvisibleListの範囲内に収まっていたら
                         removeCompleteSalvage.remove(splitCmd);
                     }else{
-                        System.out.println("removeの後の数が不正です。");
+                        System.out.println("範囲内の数を指定してください。");
                     }
                 }else if(splitCmd[0].equals(Main.VIEW)){
                     TodoManager.updateVisibleList(splitCmd);//指定された場所のvisibleListを作る
                 }else if(splitCmd[0].equals(Main.COMPLETE[0])&&!splitCmd[1].equals("")){
                     if(TodoManager.visibleList.size()>=Integer.parseInt(splitCmd[1])&&Integer.parseInt(splitCmd[1])>0){
-                        //removeの後に指定した数がvisibleListの範囲内に収まっていたら
                         removeCompleteSalvage.complete(splitCmd);
                     }else{
-                        System.out.println("completeの後の数が不正です。");
+                        System.out.println("範囲内の数を指定してください。");
                     }
                 }else if(splitCmd[0].equals(Main.SALVAGE)&&!splitCmd[1].equals("")){
                     if(TodoManager.visibleList.size()>=Integer.parseInt(splitCmd[1])&&Integer.parseInt(splitCmd[1])>0){
-                        //removeの後に指定した数がvisibleListの範囲内に収まっていたら
                         removeCompleteSalvage.salvage(splitCmd);
                     }else{
-                        System.out.println("completeの後の数が不正です。");
+                        System.out.println("範囲内の数を指定してください。");
+                    }
+                }else if(splitCmd[0].equals(Main.EDIT)&&!splitCmd[2].equals("")){
+                    if(TodoManager.visibleList.size()>=Integer.parseInt(splitCmd[1])&&Integer.parseInt(splitCmd[1])>0){
+                        editCommand.edit(splitCmd);
+                    }else{
+                        System.out.println("editの後のコマンドが不正です。");
                     }
                 }else{
                     System.out.println("不明なコマンドです");
