@@ -1,12 +1,5 @@
 package jp.ac.uryukyu.ie.e195760;
-
-import java.sql.Time;
 import java.util.Scanner;
-//remove、completeされた時のtimestampを記録
-//remove,completeを実行したときにtimestamp記録処理実行
-//salvage実行時、timestamp削除処理実行
-//セーブリストにtimestampを追加
-//timestampによる削除の時、TodoListには反映されるがsaveには反映されない可能性。
 //scopeを考える。クラス全体で共有されてる変数を移動する
 //DEFAULTVIEWを変更できるようにすれば見ている場所を変えたくないとき操作できる
 
@@ -14,13 +7,13 @@ import java.util.Scanner;
  * プログラム全体の司令塔で、不変のデータを置く場所。
  */
 public class Main {
-    static String FILENAME="TodoListSave.csv";
-    static String ADD="add";
-    static String REMOVE="remove";
-    static String VIEW="view";
-    static String SALVAGE="salvage";
-    static String EDIT="edit";
-    static String HELP="help";
+    static String FILENAME="TodoListSave.csv";//セーブファイル名
+    static String ADD="add";//タスクを追加するコマンド
+    static String REMOVE="remove";//タスクをゴミ箱に送るコマンド
+    static String VIEW="view";//タスクを絞って見るコマンド
+    static String SALVAGE="salvage";//タスクを完了もしくはゴミ箱から、未完了に戻すコマンド
+    static String EDIT="edit";//タスクのデータを編集するコマンド
+    static String HELP="help";//コマンドについての説明が見れるコマンド
     static String[] TITLE={"title=","題名","0"};
     static String[] DESCRIPTION={"description=","説明","1"};//コマンドの定形文定義
     static String[] DEADLINE={"deadline=","締切","2"};
@@ -40,11 +33,6 @@ public class Main {
         SaveandLoad savefile=new SaveandLoad();
         Scanner scan=new Scanner(System.in);
         savefile.load();//ファイルロード
-
-//        TimeStamp tStamp=new TimeStamp();
-//        System.out.println(tStamp.getTime());
-//        System.out.println(tStamp.daycount("2020/01/08 01:23:45"));
-
         TodoManager.updateVisibleList(DEFAULTVIEW);//デフォルトのvisibleListに更新する
         while(true){
             view.PrintTodo();//毎回visibleListに記されたTodoList// を出力する

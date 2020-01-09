@@ -16,48 +16,34 @@ public class TodoManager {
      */
     static void updateVisibleList(String[] cmd){
         delete();
-
-//        for(String[] tmp:todoList){
-//            System.out.println(Arrays.toString(tmp));
-//        }
-
         visibleList.clear();
         int count=0;//todoListの何番目にあるかを示すために使う
         try{
             for(String[] todoList:TodoManager.todoList){//フィルターをかける
-//                if(!todoList[Main.TIMESTAMP].equals("")){//完了、もしくは廃棄されてからしばらく経ったタスクを消去する
-//                    TimeStamp tStamp = new TimeStamp();
-//                    if(tStamp.daycount(todoList[Main.TIMESTAMP])>=Main.DELETELIMIT){//todoListを回してる間にtodoListを変更できない
-//                        deleteList.add(count);
-//                    }
-//                }
-
-                if(cmd[1].equals(Main.COMPLETE[0])){
+                if(cmd[1].equals(Main.COMPLETE[0])){//完了タスクのみ
                     ViewManager.place=Main.COMPLETE[1];
                     if(todoList[Integer.parseInt(Main.COMPLETE[2])].equals("true")){
                         TodoManager.visibleList.add(count);
                     }
-                }else if(cmd[1].equals(Main.PRIORITY[0])){
-                    ViewManager.place=Main.PRIORITY[1];
-                    if(todoList[Integer.parseInt(Main.PRIORITY[2])].equals("true")&&todoList[Integer.parseInt(Main.COMPLETE[2])].equals("false")){
-                        //優先タグがついているかつ、未完了
-                        TodoManager.visibleList.add(count);
-                    }
-                }else if(cmd[1].equals(Main.TRASH[0])){
+                }else if(cmd[1].equals(Main.TRASH[0])){//ゴミ箱に入っているタスクのみ
                     ViewManager.place=Main.TRASH[1];
                     if(todoList[Integer.parseInt(Main.TRASH[2])].equals("true")){
                         TodoManager.visibleList.add(count);
                     }
-                }else if(cmd[1].indexOf(Main.TAG[0])==0&&cmd[1].split("=").length==2){
-                    String tag=cmd[1].split("=")[1];
-                    ViewManager.place=Main.TAG[1]+":"+tag;
-                    if(todoList[Integer.parseInt(Main.TAG[2])].equals(tag)&&todoList[Integer.parseInt(Main.COMPLETE[2])].equals("false")){//コマンドはview tag=otherなどとする予定
-                        TodoManager.visibleList.add(count);
-                    }
-                }else{//デフォルト
-                    ViewManager.place=Main.INCOMPLETE[1];
-                    if(todoList[Integer.parseInt(Main.COMPLETE[2])].equals("false")&&todoList[Integer.parseInt(Main.TRASH[2])].equals("false")){
-                        //未完了タスクかつゴミ箱に入っていないタスク
+                }else if(!todoList[Integer.parseInt(Main.TRASH[2])].equals("true")&&!todoList[Integer.parseInt(Main.COMPLETE[2])].equals("true")){//デフォルト
+                    if(cmd[1].equals(Main.PRIORITY[0])){//優先タスクのみ
+                        ViewManager.place=Main.PRIORITY[1];
+                        if(todoList[Integer.parseInt(Main.PRIORITY[2])].equals("true")&&todoList[Integer.parseInt(Main.COMPLETE[2])].equals("false")){
+                            TodoManager.visibleList.add(count);
+                        }
+                    }else if(cmd[1].indexOf(Main.TAG[0])==0&&cmd[1].split("=").length==2) {//特定タグのみ
+                        String tag = cmd[1].split("=")[1];
+                        ViewManager.place = Main.TAG[1] + ":" + tag;
+                        if (todoList[Integer.parseInt(Main.TAG[2])].equals(tag) && todoList[Integer.parseInt(Main.COMPLETE[2])].equals("false")) {//コマンドはview tag=otherなどとする予定
+                            TodoManager.visibleList.add(count);
+                        }
+                    }else{
+                        ViewManager.place=Main.INCOMPLETE[1];//未完了タスクのみ
                         TodoManager.visibleList.add(count);
                     }
                 }
@@ -75,7 +61,6 @@ public class TodoManager {
             if(!todoList[Main.TIMESTAMP].equals("")){//完了、もしくは廃棄されてからしばらく経ったタスクを消去する
                 TimeStamp tStamp = new TimeStamp();
                 if(tStamp.daycount(todoList[Main.TIMESTAMP])>=Main.DELETELIMIT){//todoListを回してる間にtodoListを変更できない
-                    //System.out.println(Arrays.toString(todoList)+":"+count);
                     deleteList.add(count);
                 }
             }

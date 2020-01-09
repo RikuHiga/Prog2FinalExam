@@ -2,7 +2,7 @@ package jp.ac.uryukyu.ie.e195760;
 
 
 public class ViewManager {
-    static String place="";
+    static String place=Main.INCOMPLETE[1];
     /**
      * visibleListで指定されたtodoListの見え方を整えて出力する。
      */
