@@ -1,13 +1,13 @@
 package jp.ac.uryukyu.ie.e195760;
 
 public class AddCommand {
-    String[] additionalConfig=new String[7];
+    String[] additionalConfig=new String[8];
     //Main main=new Main();
     TodoManager todo=new TodoManager();
 
     void add(String[] cmd){
         //System.out.println("add起動");
-        String[] todoData={"","","","","","false","false","false"};//タイトル,説明,締切,所要時間,タグ,優先タグ,完了した,捨てた
+        String[] todoData={"","","","","","","false","false","false"};
         try{
             todoData[Integer.parseInt(Main.TITLE[2])]=cmd[1];
             additionalConfig=cmd[2].split(",");

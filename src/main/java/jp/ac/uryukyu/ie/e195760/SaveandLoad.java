@@ -14,8 +14,9 @@ public class SaveandLoad {
                 fileWriter.write(
                         todolist[0]+","+todolist[Integer.parseInt(Main.DESCRIPTION[2])]+
                                 ","+todolist[Integer.parseInt(Main.DEADLINE[2])]+","+todolist[Integer.parseInt(Main.DURATION[2])]+
-                                ","+todolist[Integer.parseInt(Main.TAG[2])]+","+todolist[Integer.parseInt(Main.PRIORITY[2])]+
-                                ","+todolist[Integer.parseInt(Main.COMPLETE[2])]+","+todolist[Integer.parseInt(Main.TRASH[2])]+"\n");
+                                ","+todolist[Integer.parseInt(Main.TAG[2])]+","+todolist[Main.TIMESTAMP]+","+todolist[Integer.parseInt(Main.PRIORITY[2])]+
+                                ","+todolist[Integer.parseInt(Main.COMPLETE[2])]+","+todolist[Integer.parseInt(Main.TRASH[2])]+
+                                "\n");
             }
             fileWriter.close();
         } catch (IOException ex) {

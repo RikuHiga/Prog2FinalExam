@@ -1,13 +1,22 @@
 package jp.ac.uryukyu.ie.e195760;
 
+import java.util.Calendar;
+
 public class RemoveCompleteSalvage {
+    TimeStamp tStamp=new TimeStamp();
     int infoPlace;//trash、またはcompleteの情報があるのはtodoListの何番目かを示す
     String setData;
+    String Date;
 
+    /**
+     * ゴミ箱に捨てるためにtodo[COMPELTE[2]]にtrueをセットし、timestampをつけるための前準備
+     * @param cmd
+     */
     void remove(String[] cmd){
         try{
             infoPlace=Integer.parseInt(Main.TRASH[2]);
             setData="true";
+            Date=tStamp.getTime();
             common(cmd);
             TodoManager.updateVisibleList(Main.DEFAULTVIEW);
         }catch(NumberFormatException ex){
@@ -15,10 +24,16 @@ public class RemoveCompleteSalvage {
         }
 
     }
+
+    /**
+     * 完了タグをつけるためにtodo[COMPELTE[2]]にtrueをセットし、timestampをつけるための前準備
+     * @param cmd
+     */
     void complete(String[] cmd){
         try{
             infoPlace=Integer.parseInt(Main.COMPLETE[2]);
             setData="true";
+            Date=tStamp.getTime();
             common(cmd);
             TodoManager.updateVisibleList(Main.DEFAULTVIEW);
         }catch(NumberFormatException ex){
@@ -27,13 +42,14 @@ public class RemoveCompleteSalvage {
     }
 
     /**
-     * ゴミ箱からも完了タスクからも戻すためにcompleteもtrashもfalseに戻す。
+     * ゴミ箱からも完了タスクからも戻すためにcompleteもtrashもfalseに戻し、timestampを""に設定するための前準備
      * @param cmd コマンド
      */
     void salvage(String[] cmd){
         try{
             infoPlace=Integer.parseInt(Main.COMPLETE[2]);
             setData="false";
+            Date="";
             common(cmd);
             infoPlace=Integer.parseInt(Main.TRASH[2]);
             common(cmd);
@@ -42,7 +58,12 @@ public class RemoveCompleteSalvage {
             System.out.println("数値を指定してください。");
         }
     }
-    void common(String[] cmd){
+
+    /**
+     * 予め設定されたフラグとtimestampを設定する。
+     * @param cmd
+     */
+    void common(String[] cmd){//extend?
         int index=0;
         String[] todo;
         try{
@@ -52,6 +73,7 @@ public class RemoveCompleteSalvage {
         }
         todo=TodoManager.todoList.get(TodoManager.visibleList.get(index-1));
         todo[infoPlace]=setData;
+        todo[Main.TIMESTAMP]=Date;
         TodoManager.todoList.set(TodoManager.visibleList.get(index-1),todo);
     }
 }

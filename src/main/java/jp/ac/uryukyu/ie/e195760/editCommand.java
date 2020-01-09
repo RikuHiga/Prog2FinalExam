@@ -1,9 +1,5 @@
 package jp.ac.uryukyu.ie.e195760;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-//edit 1 title=nanika,description=nanika,tag=nanika,priority(優先がついていれば消す。なければつける）
 public class editCommand {
     void edit(String[] cmd){
         String[] todo;

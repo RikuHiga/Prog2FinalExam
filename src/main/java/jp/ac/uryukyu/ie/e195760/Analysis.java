@@ -11,10 +11,12 @@ public class Analysis {
     RemoveCompleteSalvage removeCompleteSalvage=new RemoveCompleteSalvage();
     ViewManager viewcommand=new ViewManager();
     editCommand editCommand=new editCommand();
+    helpCommand help=new helpCommand();
     //String[] viewCmd={"","",""};//visibleList更新用
     //Main main=new Main();
     void classify(String cmd){
         try{
+            //コンストラクタでできるかもしれない
             if(cmd.split(" ",3).length>=1){//コマンドが何も入力されていなかったら弾く
                 if(cmd.split(" ",3).length==1){//splitCmdのlengthを3にする
                     splitCmd[0]=cmd.split(" ",3)[0];
@@ -57,6 +59,8 @@ public class Analysis {
                     }else{
                         System.out.println("editの後のコマンドが不正です。");
                     }
+                }else if(splitCmd[0].equals(Main.HELP)){
+                    help.help(splitCmd);
                 }else{
                     System.out.println("不明なコマンドです");
                 }
