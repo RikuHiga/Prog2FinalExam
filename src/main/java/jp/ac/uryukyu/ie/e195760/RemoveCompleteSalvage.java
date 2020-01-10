@@ -1,22 +1,25 @@
 package jp.ac.uryukyu.ie.e195760;
 
+/**
+ * removeコマンド、completeコマンド、salvageコマンドの処理。
+ */
 public class RemoveCompleteSalvage {
-    TimeStamp tStamp=new TimeStamp();
-    int infoPlace;//trash、またはcompleteの情報があるのはtodoListの何番目かを示す
-    String setData;
-    String Date;
+    /***TimeStampクラスを使うためにインスタンス化*/TimeStamp tStamp=new TimeStamp();
+    /***変更したいデータがtodoListの何番目かを示す */int infoPlace;
+    /***変更したいデータをどう変更のデータを入れる */String setData;
+    /***タイムスタンプをこの変数の内容に書き換える。 */String Date;
 
     /**
      * ゴミ箱に捨てるためにtodo[COMPELTE[2]]にtrueをセットし、timestampをつけるための前準備
-     * @param cmd
+     * @param cmd 入力されたコマンド
      */
     void remove(String[] cmd){
         try{
-            infoPlace=Integer.parseInt(Main.TRASH[2]);
-            setData="true";
-            Date=tStamp.getTime();
-            common(cmd);
-            TodoManager.updateVisibleList(Main.DEFAULTVIEW);
+            infoPlace=Integer.parseInt(Main.TRASH[2]);//変更する場所
+            setData="true";//変更したい内容
+            Date=tStamp.getTime();//日付を文字型で取得
+            common(cmd);//共通処理
+            TodoManager.updateVisibleList(Main.DEFAULTVIEW);//visibleList更新
         }catch(NumberFormatException ex){
             System.out.println("数値を指定してください。");
         }
@@ -24,7 +27,7 @@ public class RemoveCompleteSalvage {
 
     /**
      * 完了タグをつけるためにtodo[COMPELTE[2]]にtrueをセットし、timestampをつけるための前準備
-     * @param cmd
+     * @param cmd 入力されたコマンド
      */
     void complete(String[] cmd){
         try{
@@ -40,7 +43,7 @@ public class RemoveCompleteSalvage {
 
     /**
      * ゴミ箱からも完了タスクからも戻すためにcompleteもtrashもfalseに戻し、timestampを""に設定するための前準備
-     * @param cmd コマンド
+     * @param cmd 入力されたコマンド
      */
     void salvage(String[] cmd){
         try{
@@ -57,8 +60,8 @@ public class RemoveCompleteSalvage {
     }
 
     /**
-     * 予め設定されたフラグとtimestampを設定する。
-     * @param cmd
+     * 予め設定されたフラグとtimestampを設定する。remove,complete,salavageのそれぞれの共通処理をまとめた。
+     * @param cmd 入力されたコマンド
      */
     void common(String[] cmd){
         int index=0;

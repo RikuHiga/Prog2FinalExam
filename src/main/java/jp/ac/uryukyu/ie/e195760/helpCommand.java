@@ -1,7 +1,9 @@
 package jp.ac.uryukyu.ie.e195760;
-
 import java.util.Scanner;
 
+/**
+ * ヘルプコマンドの処理
+ */
 public class helpCommand {
     /**
      * helpコマンドの解析。
@@ -67,7 +69,7 @@ public class helpCommand {
     void viewInstruct(){
         System.out.println(Main.VIEW+"コマンド==============================");
         System.out.println("特定のToDoリストを表示するコマンドです。");
-        System.out.println(Main.VIEW+" とだけ入力すると、"+Main.INCOMPLETE[1]+"のみが表示されます。");
+        System.out.println(Main.VIEW+" とだけ入力すると、"+Main.INCOMPLETE+"のみが表示されます。");
         System.out.println(Main.VIEW+" "+Main.COMPLETE[0]+"と入力すると、"+Main.COMPLETE[1]+"のみが表示されます。");
         System.out.println(Main.VIEW+" "+Main.TRASH[0]+"と入力すると、"+Main.TRASH[1]+"のみが表示されます。");
         System.out.println(Main.VIEW+" "+Main.PRIORITY[0]+"と入力すると、"+Main.PRIORITY[1]+"のみが表示されます。");

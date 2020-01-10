@@ -1,15 +1,15 @@
 package jp.ac.uryukyu.ie.e195760;
 
-import java.util.Arrays;
-
+/**
+ * タスクを追加するコマンドの処理。
+ */
 public class AddCommand {
-    String[] additionalConfig=new String[8];
-
     /**
      * コマンドに従ってtodoListにタスクを追加するメソッド。
      * @param cmd 入力されたコマンド
      */
     void add(String[] cmd){
+        String[] additionalConfig;
         String[] todoData=Main.TODODATA.clone();//ディープコピー
         try{
             todoData[Integer.parseInt(Main.TITLE[2])]=cmd[1];

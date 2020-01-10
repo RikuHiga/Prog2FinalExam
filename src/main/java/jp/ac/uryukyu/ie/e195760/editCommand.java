@@ -1,6 +1,13 @@
 package jp.ac.uryukyu.ie.e195760;
 
+/**
+ * タスクを変更するコマンドの処理。
+ */
 public class editCommand {
+    /**
+     * 指定されたtodoをコマンドの通りに書き換える。
+     * @param cmd 入力されたコマンド
+     */
     void edit(String[] cmd){
         String[] todo;
         String[] splitCmd;

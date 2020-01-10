@@ -2,7 +2,7 @@ package jp.ac.uryukyu.ie.e195760;
 import java.io.*;
 
 /**
- * TodoListをセーブするクラス。csv形式で保存する
+ * TodoListのセーブ、読み込み処理。csv形式で保存する
  */
 public class SaveandLoad {
     /**

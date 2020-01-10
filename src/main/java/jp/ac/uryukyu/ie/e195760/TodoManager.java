@@ -1,14 +1,12 @@
 package jp.ac.uryukyu.ie.e195760;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * TODOリストを管理し、ViewAll機能を制御するクラス。
  */
 public class TodoManager {
-    public static ArrayList<String[]> todoList=new ArrayList<String[]>();
-    public static ArrayList<Integer> visibleList=new ArrayList<Integer>();
+    /*** TODOリストのデータ*/public static ArrayList<String[]> todoList=new ArrayList<String[]>();
+    /***ユーザーに見せるデータはTODOリストの何番目に入っているかを格納*/public static ArrayList<Integer> visibleList=new ArrayList<Integer>();
 
     /**
      * タスク一覧を表示するためのvisibleListを作る。フィルター機能あり
@@ -43,7 +41,7 @@ public class TodoManager {
                             TodoManager.visibleList.add(count);
                         }
                     }else{
-                        ViewManager.place=Main.INCOMPLETE[1];//未完了タスクのみ
+                        ViewManager.place=Main.INCOMPLETE;//未完了タスクのみ
                         TodoManager.visibleList.add(count);
                     }
                 }
@@ -54,13 +52,16 @@ public class TodoManager {
         }
     }
 
+    /**
+     * タスクが完了もしくはゴミ箱に捨てられてから一定期間経ったタスクを消す。
+     */
     static void delete(){
         int count=0;
         ArrayList<Integer> deleteList=new ArrayList<Integer>();
         for(String[] todoList:todoList){
             if(!todoList[Main.TIMESTAMP].equals("")){//完了、もしくは廃棄されてからしばらく経ったタスクを消去する
                 TimeStamp tStamp = new TimeStamp();
-                if(tStamp.daycount(todoList[Main.TIMESTAMP])>=Main.DELETELIMIT){//todoListを回してる間にtodoListを変更できない
+                if(tStamp.daycount(todoList[Main.TIMESTAMP])>=Main.DELETELIMIT){//todoListを回してる間にtodoListを変更できないのでcountをdeleteListに入れて後でまとめて削除する
                     deleteList.add(count);
                 }
             }

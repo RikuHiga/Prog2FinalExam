@@ -1,7 +1,10 @@
 package jp.ac.uryukyu.ie.e195760;
 
+/**
+ * ユーザーが見やすい形にtodoListを整える
+ */
 public class ViewManager {
-    static String place=Main.INCOMPLETE[1];
+    /*** 見ているリストが今どこなのかを示す。初期値は完了していないリスト*/static String place=Main.INCOMPLETE;
     /**
      * visibleListで指定されたtodoListの見え方を整えて出力する。
      */
@@ -14,7 +17,6 @@ public class ViewManager {
             for(int visibleIndex:TodoManager.visibleList){
                 count++;//タスクの一番最初に表示する数字に使う
                 optionCheck=false;
-                //PrintTodo(TodoManager.todoList.get(visibleIndex));
                 String priority="　";
                 if(TodoManager.todoList.get(visibleIndex)[Integer.parseInt(Main.PRIORITY[2])].equals("true")){//todoListのvisibleIndex番目のMain.PRIORITY[2]番目はtrue
                     priority="＊";
@@ -42,7 +44,6 @@ public class ViewManager {
         }catch(NumberFormatException ex){
             System.out.println("数値を指定してください。");
         }
-
         System.out.println("==========================================");
     }
 }
