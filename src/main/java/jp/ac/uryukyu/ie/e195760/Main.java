@@ -2,6 +2,7 @@ package jp.ac.uryukyu.ie.e195760;
 import java.util.Scanner;
 //scopeを考える。クラス全体で共有されてる変数を移動する
 //DEFAULTVIEWを変更できるようにすれば見ている場所を変えたくないとき操作できる
+//add title description= と入力するとバグる
 
 /**
  * プログラム全体の司令塔で、不変のデータを置く場所。
@@ -26,6 +27,7 @@ public class Main {
     static int TIMESTAMP=5;//timestampが何番目にあるか
     static int DELETELIMIT=1;//ゴミ箱に捨てられるか完了してから消すまでの日にち
     static String[] DEFAULTVIEW={"","",""};//デフォルトのviewListを作るためのコマンド
+    static String[] TODODATA={"","","","","","","false","false","false"};//基本となるtodoList
 
     public static void main(String[] args){
         ViewManager view=new ViewManager();

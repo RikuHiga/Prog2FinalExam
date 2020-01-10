@@ -7,10 +7,8 @@ public class editCommand {
         //指定されたtodoを持ってくる
         try{
             todo=TodoManager.todoList.get(TodoManager.visibleList.get(Integer.parseInt(cmd[1])-1));
-            //cmd[2]を","で分割する
             splitCmd=cmd[2].split(",");
-            for(String config:splitCmd){//config:title=example
-                //コマンドを一個ずつ、持ってきたtodoに適用する
+            for(String config:splitCmd){
                 if(config.indexOf(Main.TITLE[0])==0){
                     todo[Integer.parseInt(Main.TITLE[2])]=config.split(Main.TITLE[0])[1];
                 }else if(config.indexOf(Main.DESCRIPTION[0])==0){
@@ -30,7 +28,6 @@ public class editCommand {
                 }else{
                     System.out.println(config+"は不明なコマンドです。");
                 }
-                //変更したtodoを元の場所に戻す
             }
             TodoManager.todoList.set(TodoManager.visibleList.get(Integer.parseInt(cmd[1])-1),todo);
         }catch(NumberFormatException ex){

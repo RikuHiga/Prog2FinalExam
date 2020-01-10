@@ -9,21 +9,29 @@ public class helpCommand {
      */
     void help(String[] cmd){
         Scanner scan=new Scanner(System.in);
+        boolean doHelp=false;
         if(cmd[1].equals(Main.ADD)||cmd[1].equals("")){
             addInstruct();
+            doHelp=true;
         }
         if(cmd[1].equals(Main.REMOVE)||cmd[1].equals("")){
             removeInstruct();
+            doHelp=true;
         }
         if(cmd[1].equals(Main.VIEW)||cmd[1].equals("")){
             viewInstruct();
+            doHelp=true;
         }
         if(cmd[1].equals(Main.EDIT)||cmd[1].equals("")){
             editInstruct();
+            doHelp=true;
         }
-        System.out.println("Enterを押すとhelpを終了します。");
-        String tmp=scan.nextLine();
-        //System.out.println(tmp);
+        if(doHelp){
+            System.out.println("Enterを押すとhelpを終了します。");
+            String tmp=scan.nextLine();
+        }else{
+            System.out.println("不明なコマンドです。");
+        }
     }
 
     /**

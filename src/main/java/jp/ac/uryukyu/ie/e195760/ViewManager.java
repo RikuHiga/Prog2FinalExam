@@ -1,6 +1,5 @@
 package jp.ac.uryukyu.ie.e195760;
 
-
 public class ViewManager {
     static String place=Main.INCOMPLETE[1];
     /**

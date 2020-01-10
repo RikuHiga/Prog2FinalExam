@@ -1,7 +1,5 @@
 package jp.ac.uryukyu.ie.e195760;
 
-import java.util.Calendar;
-
 public class RemoveCompleteSalvage {
     TimeStamp tStamp=new TimeStamp();
     int infoPlace;//trash、またはcompleteの情報があるのはtodoListの何番目かを示す
@@ -22,7 +20,6 @@ public class RemoveCompleteSalvage {
         }catch(NumberFormatException ex){
             System.out.println("数値を指定してください。");
         }
-
     }
 
     /**
@@ -63,7 +60,7 @@ public class RemoveCompleteSalvage {
      * 予め設定されたフラグとtimestampを設定する。
      * @param cmd
      */
-    void common(String[] cmd){//extend?
+    void common(String[] cmd){
         int index=0;
         String[] todo;
         try{

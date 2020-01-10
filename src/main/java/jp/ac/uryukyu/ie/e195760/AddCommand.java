@@ -1,16 +1,19 @@
 package jp.ac.uryukyu.ie.e195760;
 
+import java.util.Arrays;
+
 public class AddCommand {
     String[] additionalConfig=new String[8];
-    //Main main=new Main();
-    TodoManager todo=new TodoManager();
 
+    /**
+     * コマンドに従ってtodoListにタスクを追加するメソッド。
+     * @param cmd 入力されたコマンド
+     */
     void add(String[] cmd){
-        //System.out.println("add起動");
-        String[] todoData={"","","","","","","false","false","false"};
+        String[] todoData=Main.TODODATA.clone();//ディープコピー
         try{
             todoData[Integer.parseInt(Main.TITLE[2])]=cmd[1];
-            additionalConfig=cmd[2].split(",");
+            additionalConfig=cmd[2].split(",");//todoの追加設定を分割して格納
             for(String splitCmd:additionalConfig){
                 if(splitCmd.indexOf(Main.DESCRIPTION[0])==0){//"description="が一番最初に来るとはdescriptionコマンドが入力されたということ
                     todoData[Integer.parseInt(Main.DESCRIPTION[2])] = splitCmd.split(Main.DESCRIPTION[0])[1];//description=以外を抽出
