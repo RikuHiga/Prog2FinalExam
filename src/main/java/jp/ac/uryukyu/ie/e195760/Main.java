@@ -1,9 +1,6 @@
 package jp.ac.uryukyu.ie.e195760;
 import java.util.Scanner;
-//scopeを考える。クラス全体で共有されてる変数を移動する
-//DEFAULTVIEWを変更できるようにすれば見ている場所を変えたくないとき操作できる
-//add title description= と入力するとバグる
-
+//add title tag=としたときに、タグを消したい。
 /**
  * プログラム全体の司令塔で、不変のデータを置く場所。
  */
