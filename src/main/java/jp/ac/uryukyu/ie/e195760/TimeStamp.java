@@ -1,5 +1,4 @@
 package jp.ac.uryukyu.ie.e195760;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,14 +17,6 @@ public class TimeStamp {
         now = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss").format(nowDate);//Date型をパターンに従ってStringに変換
         return now;
     }
-
-//    long getTime(){
-//        long now;
-//        Date nowDate = new Date();//今の時間
-//        now = nowDate.getTime();
-//        //now = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss").format(nowDate);//Date型をパターンに従ってStringに変換
-//        return now;
-//    }
 
     /**
      * 今の日時と、渡された日時の日数差を計算する

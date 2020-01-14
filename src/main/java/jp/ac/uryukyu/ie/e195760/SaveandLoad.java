@@ -11,7 +11,6 @@ public class SaveandLoad {
     void save(){
         try {
             FileWriter fileWriter = new FileWriter(Main.FILENAME);
-            //System.out.println();
             for(String[] todolist:TodoManager.todoList){
                 fileWriter.write(
                         todolist[0]+","+todolist[Integer.parseInt(Main.DESCRIPTION[2])]+

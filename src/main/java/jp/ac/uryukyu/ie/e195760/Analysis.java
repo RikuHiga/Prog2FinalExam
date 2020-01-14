@@ -4,11 +4,11 @@ package jp.ac.uryukyu.ie.e195760;
  */
 public class Analysis {
     /**
-     * コマンドの調整を行い、必ず三つの要素の配列に変換して返す。"add"と入力された場合、["add","",""]に変換する。
+     * コマンドの調整を行い、必ず三つの要素の配列に変換して返す。"add title"と入力された場合、["add","title",""]に変換する。
      * @param cmd 入力されたコマンド
      * @return 三つに分割されたコマンド
      */
-    String[] adjastCommand(String cmd){
+    String[] adjustCommand(String cmd){
         String[] splitCmd=new String[3];
         if(cmd.split(" ",3).length==1){
             splitCmd[0]=cmd.split(" ",3)[0];
@@ -31,13 +31,12 @@ public class Analysis {
     void classify(String cmd){
         AddCommand addCommand=new AddCommand();
         RemoveCompleteSalvage removeCompleteSalvage=new RemoveCompleteSalvage();
-        ViewManager viewcommand=new ViewManager();
         editCommand editCommand=new editCommand();
         helpCommand help=new helpCommand();
-        String[] splitCmd=new String[3];
+        String[] splitCmd;
         try{
             if(!cmd.split(" ",3)[0].equals("")){//コマンドが何も入力されていなかったら弾く
-                splitCmd=adjastCommand(cmd);
+                splitCmd=adjustCommand(cmd);
                 if(splitCmd[0].equals(Main.ADD)&&!splitCmd[1].equals("")){
                     addCommand.add(splitCmd);
                 }else if(splitCmd[0].equals(Main.VIEW)){
@@ -54,14 +53,14 @@ public class Analysis {
                     }else if(splitCmd[0].equals(Main.EDIT)){
                         editCommand.edit(splitCmd);
                     }else{
-                        System.out.println("不明なコマンドです");
+                        System.out.println("不明なコマンドです。");
                     }
                 }else{
-                    System.out.println("範囲内の数を指定してください。");
+                    System.out.println("不明なコマンドです。");
                 }
             }
         }catch(NumberFormatException ex){
-            System.out.println("数値を指定してください。");
+            System.out.println("不明なコマンドです。");
         }
     }
 }

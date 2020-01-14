@@ -1,6 +1,6 @@
 package jp.ac.uryukyu.ie.e195760;
 import java.util.Scanner;
-//add title tag=としたときに、タグを消したい。
+
 /**
  * プログラム全体の司令塔で、不変のデータを置く場所。
  */

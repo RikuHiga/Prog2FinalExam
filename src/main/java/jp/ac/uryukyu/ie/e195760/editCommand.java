@@ -11,7 +11,6 @@ public class editCommand {
     void edit(String[] cmd){
         String[] todo;
         String[] splitCmd;
-        //指定されたtodoを持ってくる
         try{
             todo=TodoManager.todoList.get(TodoManager.visibleList.get(Integer.parseInt(cmd[1])-1));
             splitCmd=cmd[2].split(",");

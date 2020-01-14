@@ -28,16 +28,22 @@ public class TodoManager {
                     if(todoList[Integer.parseInt(Main.TRASH[2])].equals("true")){
                         TodoManager.visibleList.add(count);
                     }
-                }else if(!todoList[Integer.parseInt(Main.TRASH[2])].equals("true")&&!todoList[Integer.parseInt(Main.COMPLETE[2])].equals("true")){//デフォルト
+                }else if(!todoList[Integer.parseInt(Main.TRASH[2])].equals("true")&&!todoList[Integer.parseInt(Main.COMPLETE[2])].equals("true")){
                     if(cmd[1].equals(Main.PRIORITY[0])){//優先タスクのみ
                         ViewManager.place=Main.PRIORITY[1];
                         if(todoList[Integer.parseInt(Main.PRIORITY[2])].equals("true")&&todoList[Integer.parseInt(Main.COMPLETE[2])].equals("false")){
                             TodoManager.visibleList.add(count);
                         }
-                    }else if(cmd[1].indexOf(Main.TAG[0])==0&&cmd[1].split("=").length==2) {//特定タグのみ
-                        String tag = cmd[1].split("=")[1];
-                        ViewManager.place = Main.TAG[1] + ":" + tag;
-                        if (todoList[Integer.parseInt(Main.TAG[2])].equals(tag) && todoList[Integer.parseInt(Main.COMPLETE[2])].equals("false")) {//コマンドはview tag=otherなどとする予定
+                    }else if(cmd[1].indexOf(Main.TAG[0])==0) {//特定タグのみ
+                        String tag;
+                        if(cmd[1].split(Main.TAG[0]).length!=2){
+                            tag="";
+                            ViewManager.place = Main.TAG[1] + ":" + "タグ無し";
+                        }else{
+                            tag = cmd[1].split(Main.TAG[0])[1];
+                            ViewManager.place = Main.TAG[1] + ":" + tag;
+                        }
+                        if (todoList[Integer.parseInt(Main.TAG[2])].equals(tag) && todoList[Integer.parseInt(Main.COMPLETE[2])].equals("false")) {
                             TodoManager.visibleList.add(count);
                         }
                     }else{
