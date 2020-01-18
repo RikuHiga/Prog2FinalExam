@@ -1,6 +1,5 @@
 package jp.ac.uryukyu.ie.e195760;
 import java.util.Scanner;
-
 /**
  * プログラム全体の司令塔で、不変のデータを置く場所。
  */
@@ -22,7 +21,7 @@ public class Main {
     /*** タスクの完了フラグに関するデータ群。*/static String[] COMPLETE={"complete","完了済タスク","7"};
     /*** タスクのゴミ箱フラグに関するデータ群。*/static String[] TRASH={"trash","ゴミ箱","8"};
     /*** タスクのタイムスタンプはtodoListの何番目にあるか*/static int TIMESTAMP=5;
-    /*** タスクが完了、またはゴミ箱に捨てられてから完全に削除されるまでの日数。*/static int DELETELIMIT=1;
+    /*** タスクが完了、またはゴミ箱に捨てられてから完全に削除されるまでの日数。*/static int DELETELIMIT=7;
     /*** デフォルトのviewリストを作るためのコマンド*/static String[] DEFAULTVIEW={"","",""};
     /*** タスクの基本形。*/static String[] TODODATA={"","","","","","","false","false","false"};
 
@@ -38,8 +37,9 @@ public class Main {
         savefile.load();//ファイルロード
         TodoManager.updateVisibleList(DEFAULTVIEW);//デフォルトのvisibleListに更新する
         while(true){
+            System.out.println("\n\n");
             view.PrintTodo();//毎回visibleListに記されたTodoList// を出力する
-            System.out.println("コマンドを入力してください。");
+            System.out.println("コマンドを入力してください。終了するにはexitと入力してください。");
             String cmd=scan.nextLine();//コマンド入力
             if(cmd.equals("exit")){//exitコマンドが入力されたらプログラム終了
                 break;

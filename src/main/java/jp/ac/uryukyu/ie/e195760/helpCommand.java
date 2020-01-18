@@ -20,6 +20,13 @@ public class helpCommand {
             removeInstruct();
             doHelp=true;
         }
+        if(cmd[1].equals(Main.COMPLETE[0])||cmd[1].equals("")){
+            completeInstruct();
+            doHelp=true;
+        }if(cmd[1].equals(Main.SALVAGE)||cmd[1].equals("")){
+            salvageInstruct();
+            doHelp=true;
+        }
         if(cmd[1].equals(Main.VIEW)||cmd[1].equals("")){
             viewInstruct();
             doHelp=true;
@@ -49,18 +56,36 @@ public class helpCommand {
         System.out.println(Main.DURATION[0]+":このタスクはどのくらいの時間で完了できるかを示す所要時間を入力する。");
         System.out.println(Main.TAG[0]+":タスクに任意のタグを設定できる。");
         System.out.println(Main.PRIORITY[0]+":入力するとこのタスクを優先タスクに設定できる。");
-        System.out.println(Main.ADD+" title "+Main.DESCRIPTION[0]+"試しに作った,"+Main.TAG[0]+"sampleTag,"+Main.PRIORITY[0]);
+        System.out.println(Main.ADD+" title "+Main.DESCRIPTION[0]+"testTask,"+Main.TAG[0]+"sampleTag,"+Main.PRIORITY[0]);
         System.out.println("コマンドを上のように書くと追加設定が付与されたToDoが追加されます、追加設定同士はコンマで区切る必要があります。");
     }
 
     /**
      * removeコマンドの説明。
-     */
+            */
     void removeInstruct(){
         System.out.println(Main.REMOVE+"コマンド==============================");
         System.out.println("任意のToDoを削除するコマンドです。削除されたToDoはゴミ箱に送られます。");
         System.out.println(Main.REMOVE+" [消したいタスクの番号]と入力してください。必ずToDoに付いている数で指定し、文字では指定しないでください。");
         System.out.println(Main.REMOVE+" 1と入力するとToDoリストの一番目が削除され、ゴミ箱に送られます。");
+    }
+
+    /**
+     * completeコマンドの説明。
+     */
+    void completeInstruct(){
+        System.out.println(Main.COMPLETE[0]+"コマンド==============================");
+        System.out.println("タスクが完了した際に使用するコマンドです。完了したToDoは完了済タスクに送られます。");
+        System.out.println(Main.COMPLETE[0]+" [完了したタスクの番号]と入力してください。必ずToDoに付いている数で指定し、文字では指定しないでください。");
+        System.out.println(Main.COMPLETE[0]+" 1と入力するとToDoリストの一番目が完了済タスクに送られます。");
+    }/**
+     * salavgeコマンドの説明。
+     */
+    void salvageInstruct(){
+        System.out.println(Main.SALVAGE+"コマンド==============================");
+        System.out.println("任意のToDoを未完了タスクに戻すコマンドです。完了済タスク、ゴミ箱で使うことができます。");
+        System.out.println(Main.SALVAGE+" [戻したいタスクの番号]と入力してください。必ずToDoに付いている数で指定し、文字では指定しないでください。");
+        System.out.println(Main.SALVAGE+" 1と入力するとToDoリストの一番目が未完了タスクに戻されます。");
     }
 
     /**
@@ -90,7 +115,7 @@ public class helpCommand {
         System.out.println(Main.DEADLINE[0]+"[変更後の締切]:締切の変更ができます。");
         System.out.println(Main.DURATION[0]+"[変更後の所要時間]:所要時間の変更ができます。");
         System.out.println(Main.TAG[0]+"[変更後タグの名前]:タグの名前の変更ができます。");
-        System.out.println(Main.PRIORITY[0]+":優先タグがない場合は付与し、ある場合は外します。");
+        System.out.println(Main.PRIORITY[0]+":優先タグの切り替えを行います。優先タグがない場合は付与し、ある場合は外します。");
         System.out.println("同時に複数の要素の編集がしたい場合は,で区切って記述してください。");
     }
 }

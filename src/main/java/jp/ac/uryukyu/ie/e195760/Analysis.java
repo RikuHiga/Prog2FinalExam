@@ -25,7 +25,7 @@ public class Analysis {
     }
 
     /**
-     * コマンドを解析して、適したメソッドを起動する
+     * コマンドを解析して、適したメソッドを起動する。適さないコマンドを弾く役割も担う。
      * @param cmd 入力されたコマンド
      */
     void classify(String cmd){
