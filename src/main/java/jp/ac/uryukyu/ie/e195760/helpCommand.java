@@ -37,7 +37,7 @@ public class helpCommand {
         }
         if(doHelp){
             System.out.println("Enterを押すとhelpを終了します。");
-            String tmp=scan.nextLine();
+            scan.nextLine();
         }else{
             System.out.println("不明なコマンドです。");
         }
@@ -58,16 +58,19 @@ public class helpCommand {
         System.out.println(Main.PRIORITY[0]+":入力するとこのタスクを優先タスクに設定できる。");
         System.out.println(Main.ADD+" title "+Main.DESCRIPTION[0]+"testTask,"+Main.TAG[0]+"sampleTag,"+Main.PRIORITY[0]);
         System.out.println("コマンドを上のように書くと追加設定が付与されたToDoが追加されます、追加設定同士はコンマで区切る必要があります。");
+        System.out.println();
     }
 
     /**
      * removeコマンドの説明。
-            */
+     */
     void removeInstruct(){
         System.out.println(Main.REMOVE+"コマンド==============================");
         System.out.println("任意のToDoを削除するコマンドです。削除されたToDoはゴミ箱に送られます。");
         System.out.println(Main.REMOVE+" [消したいタスクの番号]と入力してください。必ずToDoに付いている数で指定し、文字では指定しないでください。");
         System.out.println(Main.REMOVE+" 1と入力するとToDoリストの一番目が削除され、ゴミ箱に送られます。");
+        System.out.println("未完了タスクで使うことができます。");
+        System.out.println();
     }
 
     /**
@@ -78,6 +81,8 @@ public class helpCommand {
         System.out.println("タスクが完了した際に使用するコマンドです。完了したToDoは完了済タスクに送られます。");
         System.out.println(Main.COMPLETE[0]+" [完了したタスクの番号]と入力してください。必ずToDoに付いている数で指定し、文字では指定しないでください。");
         System.out.println(Main.COMPLETE[0]+" 1と入力するとToDoリストの一番目が完了済タスクに送られます。");
+        System.out.println("未完了タスクで使うことができます。");
+        System.out.println();
     }/**
      * salavgeコマンドの説明。
      */
@@ -86,6 +91,8 @@ public class helpCommand {
         System.out.println("任意のToDoを未完了タスクに戻すコマンドです。完了済タスク、ゴミ箱で使うことができます。");
         System.out.println(Main.SALVAGE+" [戻したいタスクの番号]と入力してください。必ずToDoに付いている数で指定し、文字では指定しないでください。");
         System.out.println(Main.SALVAGE+" 1と入力するとToDoリストの一番目が未完了タスクに戻されます。");
+        System.out.println("完了済タスク及びゴミ箱で使うことができます。");
+        System.out.println();
     }
 
     /**
@@ -100,6 +107,7 @@ public class helpCommand {
         System.out.println(Main.VIEW+" "+Main.PRIORITY[0]+"と入力すると、"+Main.PRIORITY[1]+"のみが表示されます。");
         System.out.println(Main.VIEW+" "+Main.TAG[0]+"=[任意のタグ]と入力すると、指定したタグのみが表示されます。");
         System.out.println("AND検索、OR検索には対応していません。");
+        System.out.println();
     }
 
     /**
@@ -117,5 +125,6 @@ public class helpCommand {
         System.out.println(Main.TAG[0]+"[変更後タグの名前]:タグの名前の変更ができます。");
         System.out.println(Main.PRIORITY[0]+":優先タグの切り替えを行います。優先タグがない場合は付与し、ある場合は外します。");
         System.out.println("同時に複数の要素の編集がしたい場合は,で区切って記述してください。");
+        System.out.println();
     }
 }

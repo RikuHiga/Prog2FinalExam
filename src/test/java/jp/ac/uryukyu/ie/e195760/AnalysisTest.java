@@ -10,8 +10,8 @@ class AnalysisTest {
 
     @Test
     void adjastCommand() {
-        String cmd="add title";
-        String[] idealCmd={"add","title",""};
+        String cmd="add title";//入力されたと想定
+        String[] idealCmd={"add","title",""};//理想の結果
         String[] adjustCmd;
         Analysis analysis=new Analysis();
         adjustCmd=analysis.adjustCommand(cmd);

@@ -36,6 +36,7 @@ public class Main {
         Scanner scan=new Scanner(System.in);
         savefile.load();//ファイルロード
         TodoManager.updateVisibleList(DEFAULTVIEW);//デフォルトのvisibleListに更新する
+        System.out.println("コマンドにhelpと入力すると、コマンドの説明を見ることができます。");
         while(true){
             System.out.println("\n\n");
             view.PrintTodo();//毎回visibleListに記されたTodoList// を出力する
